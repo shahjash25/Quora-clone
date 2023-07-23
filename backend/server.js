@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+//accepts json data and pasrses it
 const cors = require("cors");
 const path = require("path");
 const PORT = 80;
@@ -32,15 +33,15 @@ app.use(express.static(path.join(__dirname, "/../frontend/build")));
 
 //backend and frontend will communicate
 app.get("*", (req, res) => {
-    try {
-      res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
-    } catch (e) {
-      res.send("Oops! unexpected error");
-    }
-  });
+  try {
+    res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
+  } catch (e) {
+    res.send("Oops! unexpected error");
+  }
+});
 app.use(cors());
 
 //server listening
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Listening on port no ${PORT}`);
-  });
+  console.log(`Listening on port no ${PORT}`);
+});

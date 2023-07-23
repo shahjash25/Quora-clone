@@ -7,18 +7,15 @@ router.post("/", async (req, res) => {
   console.log(req.body);
 
   try {
-    await questionDB
-      .create({
+    await questionDB.create({
         questionName: req.body.questionName,
         questionUrl: req.body.questionUrl,
-      })
-      .then(() => {
+      }).then(() => {
         res.status(201).send({
           status: true,
           message: "Question added successfully",
         });
-      })
-      .catch((err) => {
+      }).catch((err) => {
         res.status(400).send({
           staus: false,
           message: "Bad format",

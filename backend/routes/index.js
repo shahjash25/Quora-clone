@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const questionRouter = require('./Question');
+const questionRouter = require('./Question.js');
 const answerRouter = require("./Answer");
 
 router.get("/", (req, res) => {
